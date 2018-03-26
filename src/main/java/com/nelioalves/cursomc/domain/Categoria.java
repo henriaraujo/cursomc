@@ -1,5 +1,9 @@
 package com.nelioalves.cursomc.domain;
 
+<<<<<<< HEAD
+public class Categoria {
+
+=======
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,4 +100,9 @@ public class Categoria implements Serializable {
 
 	
 	
+<<<<<<< HEAD
 }
+=======
+>>>>>>> e9e9bca82430ccd953301e45596bc493bf85cfa5
+}
+>>>>>>> 99874915261df33de138a37b089a628870bc6660
