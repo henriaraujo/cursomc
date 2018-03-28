@@ -1,4 +1,6 @@
-package com.nelioalves.cursomc.domain;
+package com.nelioalves.cursomc.enums;
+
+import com.nelioalves.cursomc.enums.TipoCliente;
 
 public enum TipoCliente {
 	
