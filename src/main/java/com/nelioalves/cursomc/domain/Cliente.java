@@ -12,10 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
-import javax.persistence.TableGenerator;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nelioalves.cursomc.enums.TipoCliente;
 
@@ -31,6 +28,10 @@ public class Cliente implements Serializable{
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
+	
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	
 	@ElementCollection
@@ -134,8 +135,14 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 	
 	
 	
