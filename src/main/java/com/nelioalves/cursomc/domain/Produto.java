@@ -2,7 +2,9 @@ package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,8 @@ public class Produto implements Serializable {
  @OneToMany(mappedBy="cliente")
  private List<Pedido> pedidos = new ArrayList<>();
  
+ @OneToMany(mappedBy="id.produto")
+ private Set<ItemPedido> itens = new HashSet<>();
  
  @JsonBackReference
  @ManyToMany
@@ -51,6 +55,18 @@ public class Produto implements Serializable {
 		this.nome = nome;
 		this.preco = preco;
 	}
+ 
+ 
+ public List<Pedido> getPedidos(){
+	 List<Pedido> lista = new ArrayList<>();
+	 
+	 for(ItemPedido x: itens) 
+	 {
+		 lista.add(x.getPedido());
+	 }
+	 
+	 return lista;
+ }
  
  
 public Integer getId() {
@@ -86,9 +102,7 @@ public int hashCode() {
 	return result;
 }
 
-public List<Pedido> getPedidos() {
-	return pedidos;
-}
+
 
 public void setPedidos(List<Pedido> pedidos) {
 	this.pedidos = pedidos;
@@ -110,6 +124,14 @@ public boolean equals(Object obj) {
 	} else if (!id.equals(other.id))
 		return false;
 	return true;
+}
+
+public Set<ItemPedido> getItens() {
+	return itens;
+}
+
+public void setItens(Set<ItemPedido> itens) {
+	this.itens = itens;
 }
 
 
